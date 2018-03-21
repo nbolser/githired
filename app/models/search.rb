@@ -1,5 +1,5 @@
 class Search < ApplicationRecord
-  scope :uniq_keyword_count, -> { group(:keyword).distinct.count(:keyword) }
+  scope :history, ->(keyword) { where(keyword: keyword).pluck(:keyword, :created_at) }
 
   validates :keyword, presence: true
 end

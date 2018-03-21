@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :search, only: [:index, :create]
+  resources :searches, only: [:index, :create]
 end

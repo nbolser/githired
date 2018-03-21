@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class SearchesController < ApplicationController
   def index
     @searches = Search.all
 
@@ -8,11 +8,14 @@ class SearchController < ApplicationController
   end
 
   def create
-    respond_to :html
-
     @search = Search.new(search_params)
+
     if @search.save
-      redirect_to search_index_url
+      respond_to do |format|
+        format.js
+      end
+    else
+      head :unprocessable_entity
     end
   end
 

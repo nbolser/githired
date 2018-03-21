@@ -1,0 +1,17 @@
+<div class="box">
+  <article class="media">
+    <div class="media-content">
+      <div class="content">
+        <h2 class="title is-4">Search History</h2>
+          <ul>
+            <% Search.group(:keyword).count.each do |kw, c| %>
+            <li>
+              <%= link_to "#{kw} #{c.to_s}", searches_path(search: { keyword: kw }),
+               method: :post, remote: true%>
+            </li>
+            <% end %>
+          </ul>
+      </div>
+    </div>
+  </article>
+</div>

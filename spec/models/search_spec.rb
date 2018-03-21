@@ -5,6 +5,14 @@ RSpec.describe Search, type: :model do
 
   it { is_expected.to be_a(Search) }
 
+  describe '.history WIP' do
+    let(:keyword) { create(:search).keyword }
+
+    it 'returns an array of keyword and datetime' do
+      expect(described_class.history(keyword).first).to include(keyword)
+    end
+  end
+
   describe '#query' do
     let(:search) { create(:search) }
 

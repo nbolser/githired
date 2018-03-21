@@ -1,0 +1,30 @@
+var lastSearch = "<%= @search.keyword %>"
+
+$.ajax({
+  url: 'https://jobs.github.com/positions.json?search=' + lastSearch,
+  dataType: 'jsonp',
+  success: function(data) {
+    var searchResultsTitle = '<h2 class=\"subtitle is-4\">' + data.length + ' results for: ' + lastSearch + '</h2>'
+    if (data.length > 1) {
+      $('.search-history').append("<%= escape_javascript(render partial: 'searches/results_table') %>");
+      for (var i = 0; i < data.length; i++) {
+        var newRowContent =
+          '<tr><td>' +
+          data[i].company +
+          '</td><td>' +
+          data[i].company_url +
+          '</td><td>' +
+          data[i].location +
+          '</td><td>' +
+          data[i].created_at +
+          '</td><td>' +
+          data[i].title +
+          '</td></tr>';
+        $('.results-table tbody').append(newRowContent);
+      }
+    };
+    $('.search-results-header').html(searchResultsTitle);
+    $('.previous-searches').html("<%= escape_javascript(render partial: 'searches/history') %>");
+    $('.search-stats').html("<%= escape_javascript(render partial: 'searches/stats') %>");
+  }
+})

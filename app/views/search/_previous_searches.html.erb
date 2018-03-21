@@ -1,7 +1,0 @@
-
-<label class="label">Previous Searches</label>
-<% Search.uniq_keyword_count.each do |k, v| %>
-  <ul>
-    <li><%= k + ' ' + v.to_s %></li>
-  </ul>
-<% end %>
