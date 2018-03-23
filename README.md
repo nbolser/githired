@@ -1,16 +1,34 @@
-# githired
-Job search via GitHub Jobs API
+# GitHired
+Job search via programming language or location via GitHub Jobs API
 
-# README
+### Prerequisites
 
-GitHub Jobs search example application
+Install project dependencies:
 
-# System dependencies
+```
+rbenv install 2.5.0
+```
 
-* `rbenv install 2.5.0`
-* `brew install postgres`
+```
+brew install postgres
+```
 
-# Configuration
+Setup the development environment:
 
-* `bundle install`
-* `bin/rspec`
+```
+$ bin/rails db:setup
+```
+
+Run the specs:
+
+```
+$ bin/rspec spec
+```
+
+## Getting Started
+
+Give it a go!
+
+```
+$ bin/rails s
+```
